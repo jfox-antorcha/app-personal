@@ -140,6 +140,7 @@ const createStyles = (colors: Colors, mode: string, inputState: State, isFocus: 
     input: {
       flex: 3,
       height: sizes.touchableHeight,
+      color: colors.text,
       fontSize: fonts.sizes.rg,
       ...fonts.regular
     },

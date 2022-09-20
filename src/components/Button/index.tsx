@@ -33,7 +33,7 @@ const StyledButton = (props: ButtonProps) => {
       onPress={onPress}
       {...touchProps}
     >
-      {loading && <ActivityIndicator color={loadingColor} />}
+      {!!loading && <ActivityIndicator color={loadingColor} />}
       {children}
     </TouchableOpacity>
   )

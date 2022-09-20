@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, Platform, StyleSheet, View } from 'react-native'
 import { useTheme } from '@react-navigation/native'
 import icons from '../../constants/icons'
 import sizes from '../../constants/sizes'
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   tabIcon: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: sizes.padding * 2.5,
+    marginTop: Platform.OS === 'ios' ? sizes.padding * 2.5 : 0,
     height: 50
   },
   tabIconLabel: {

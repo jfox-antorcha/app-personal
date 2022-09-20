@@ -1,20 +1,15 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { Provider } from 'react-redux'
 import Navigation from './src/navigation'
-import { useFonts } from 'expo-font'
+import store from './src/store'
 
 const App = () => {
-  const [fontsLoaded] = useFonts({
-    'Lato-Bold': require('./src/assets/fonts/Lato-Bold.ttf'),
-    'Lato-Light': require('./src/assets/fonts/Lato-Light.ttf'),
-    'Lato-Regular': require('./src/assets/fonts/Lato-Regular.ttf')
-  })
-
-  if (!fontsLoaded) return null
-
   return (
     <SafeAreaProvider>
-      <Navigation />
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
     </SafeAreaProvider>
   )
 }
