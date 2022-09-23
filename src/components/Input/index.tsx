@@ -131,6 +131,7 @@ const createStyles = (colors: Colors, mode: string, inputState: State, isFocus: 
           borderWidth: 0
         },
     inputContainer: {
+      backgroundColor: colors.background,
       paddingHorizontal: sizes.padding,
       flexDirection: 'row',
       justifyContent: 'space-between',

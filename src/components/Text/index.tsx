@@ -16,7 +16,7 @@ const getSizes = (sizeObj: NumberObj) =>
 const StyledText = (props: CustomProps) => {
   const { children, style, textProps } = props
   const { colors } = useTheme()
-  const styles = useMemo(() => createStyles(colors), [colors])
+  const styles = useMemo(() => createStyles(colors as Colors), [colors])
   const customStyles = useCallback(() => getCustomStyles(VARIANTS, props, styles), [props])
   return (
     <Text style={[styles.base, customStyles(), style]} {...textProps}>
@@ -45,7 +45,8 @@ const createStyles = (colors: Colors) =>
       surface: colors.surface,
       dimmed: colors.dimmedText,
       primary: colors.primary,
-      success: colors.success
+      success: colors.success,
+      black: colors.black
     }),
     ...getSizes({
       xl: fonts.sizes.xl,
@@ -57,7 +58,8 @@ const createStyles = (colors: Colors) =>
       xs: fonts.sizes.xs
     }),
     mx: { marginHorizontal: sizes.padding },
-    my: { marginVertical: sizes.padding }
+    my: { marginVertical: sizes.padding * 0.5 },
+    my2: { marginVertical: sizes.padding }
   })
 
 export default StyledText

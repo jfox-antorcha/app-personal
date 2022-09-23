@@ -1,12 +1,20 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootState, useAppDispatch } from '../../store'
+import { getEmpleadoData } from '../../store/profile/actions'
+import Tabs from '../../navigation/App/Tabs'
 
 const App = () => {
-  return (
-    <View>
-      <Text>App</Text>
-    </View>
-  );
-};
+  const dispatch = useAppDispatch()
+  const user = useSelector((state: RootState) => state.user)
 
-export default App;
+  React.useEffect(() => {
+    ;(async () => {
+      dispatch(getEmpleadoData({ token: user.userData.token, idEmpleado: user.userData.employeeId }))
+    })()
+  }, [])
+
+  return <Tabs />
+}
+
+export default App

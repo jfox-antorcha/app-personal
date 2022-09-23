@@ -22,7 +22,7 @@ const getColors = (colorsObj: any) =>
 
 const StyledButton = (props: ButtonProps) => {
   const { colors } = useTheme()
-  const styles = useMemo(() => createStyles(colors), [colors])
+  const styles = useMemo(() => createStyles(colors as Colors), [colors])
   const customStyles = useCallback(() => getCustomStyles(VARIANTS, props, styles), [props])
   const { children, onPress, style, loading = false, loadingColor = colors.surface, disabled = false, touchProps } = props
   return (
@@ -31,8 +31,7 @@ const StyledButton = (props: ButtonProps) => {
       style={[styles.base, customStyles(), style]}
       disabled={disabled || loading}
       onPress={onPress}
-      {...touchProps}
-    >
+      {...touchProps}>
       {!!loading && <ActivityIndicator color={loadingColor} />}
       {children}
     </TouchableOpacity>

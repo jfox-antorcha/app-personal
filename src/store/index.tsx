@@ -2,10 +2,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 
 import userReducer from './auth/reducer'
+import profileReducer from './profile/reducer'
 
 const store = configureStore({
   reducer: {
-    user: userReducer
+    user: userReducer,
+    profile: profileReducer
   }
 })
 

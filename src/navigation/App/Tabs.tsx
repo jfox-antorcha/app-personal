@@ -20,15 +20,14 @@ export default () => {
         tabBarShowLabel: false,
         tabBarStyle: { ...styles.tab, backgroundColor: colors.lightPrimary }
       }}
-      initialRouteName='Feed'
-    >
+      initialRouteName='Feed'>
       <Tab.Screen
         name='Feed'
         component={Feeds}
         options={{
           tabBarIcon: ({ color }) => (
             <View style={styles.tabIcon}>
-              <Image source={icons.feed} resizeMode='cover' style={{ tintColor: color, width: 30, height: 30 }} />
+              <Image source={icons.notifications} resizeMode='cover' style={{ tintColor: color, width: 30, height: 30 }} />
             </View>
           )
         }}

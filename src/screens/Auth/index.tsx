@@ -75,12 +75,14 @@ const Auth = () => {
 
   const handleAuth = async () => {
     try {
-      dispatch(
+      await dispatch(
         getUserData({
           user: formState.inputValues.user,
           password: formState.inputValues.password
         })
       )
+      if (user.error) throw new Error('Error al iniciar sesión')
+
       // const response = await getTokenAccesso(
       //   formState.inputValues.user,
       //   formState.inputValues.password,
@@ -95,18 +97,20 @@ const Auth = () => {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <StyledText xl>Hola!</StyledText>
+          <StyledText xl black>
+            Hola!
+          </StyledText>
           <StyledText rg dimmed>
             Por favor ingrese sus credenciales
           </StyledText>
         </View>
         <View style={styles.body}>
           <KeyboardAvoidingView behavior={Platform.OS == 'ios' ? 'padding' : 'position'} keyboardVerticalOffset={30}>
-            <StyledText my mx>
+            <StyledText my mx black>
               Usuario
             </StyledText>
             <StyledInput autoCapitalize='none' id='user' onInputChange={handleInputChange} mode='outline' error='requerido y/o no válido' />
-            <StyledText my mx>
+            <StyledText my mx black>
               Contraseña
             </StyledText>
             <StyledInput
