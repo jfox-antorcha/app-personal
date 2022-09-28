@@ -6,8 +6,11 @@ const createStyles = (colors: Colors) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      paddingHorizontal: sizes.padding * 2,
       paddingVertical: sizes.padding
+    },
+    listContainer: {
+      height: sizes.height * 0.94,
+      paddingHorizontal: sizes.padding
     }
   })
 

@@ -13,10 +13,10 @@ const createStyles = (colors: Colors) =>
     },
     listContainer: {
       paddingVertical: sizes.padding,
-      marginBottom: sizes.padding * 12
+      height: sizes.height * 0.94
     },
     listContent: {
-      paddingBottom: sizes.padding * 3
+      paddingBottom: sizes.padding * 16
     },
     cardContainer: {
       paddingVertical: sizes.padding

@@ -8,7 +8,8 @@ const createStyles = (colors: Colors) =>
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingBottom: sizes.padding
+      paddingBottom: sizes.padding,
+      height: sizes.height * 0.06
     },
     leftComponent: {
       flexDirection: 'row',

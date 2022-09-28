@@ -19,4 +19,6 @@ export interface Colors {
   shadow: string
   warn: string
   black: string
+  lightAlert: string
+  lightGray: string
 }

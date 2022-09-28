@@ -72,4 +72,6 @@ buck-out/
 web-build/
 dist/
 
+mockData/
+
 # @end expo-cli

@@ -14,7 +14,9 @@ export default {
     surface: '#fcfcfc',
     text: '#ffffff',
     warn: '#fb5607',
-    black: '#000000'
+    black: '#000000',
+    lightAlert: '#fcdedc',
+    lightGray: '#f5f5f5'
   },
   light: {
     accent: '#06bd80',
@@ -31,6 +33,8 @@ export default {
     surface: '#fcfcfc',
     text: '#070707',
     warn: '#fb5607',
-    black: '#000000'
+    black: '#000000',
+    lightAlert: '#fcdedc',
+    lightGray: '#f5f5f5'
   }
 }

@@ -7,7 +7,7 @@ export default {
     bg: 30,
     lg: 26,
     md: 22,
-    rg: 18,
+    rg: 16,
     sm: 14,
     xs: 12
   }

@@ -19,7 +19,7 @@ const Icon = ({ size, source, background, color, rounded, style }: Props) => {
       resizeMode='contain'
       style={{
         tintColor: color ? color : colors.text,
-        backgroundColor: background ? background : colors.background,
+        backgroundColor: background ? background : 'transparent',
         width: size,
         height: size,
         borderRadius: rounded ? size : 0,

@@ -11,10 +11,10 @@ const createStyles = (colors: Colors) =>
     body: {
       flex: 4,
       paddingVertical: sizes.padding,
-      marginBottom: sizes.padding * 8
+      height: sizes.height * 0.94
     },
     scrollContent: {
-      paddingBottom: sizes.padding * 2
+      paddingBottom: sizes.padding * 10
     }
   })
 
