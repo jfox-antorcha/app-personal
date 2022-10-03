@@ -24,6 +24,12 @@ const createStyles = (colors: Colors, formState: any) =>
       alignSelf: 'center',
       marginTop: sizes.padding * 2,
       backgroundColor: formState.formIsValid ? colors.primary : colors.border
+    },
+    footer: {
+      flex: 0.5,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'center'
     }
   })
 

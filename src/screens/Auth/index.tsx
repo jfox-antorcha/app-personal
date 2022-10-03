@@ -1,11 +1,13 @@
 import React from 'react'
-import { Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, View, Platform } from 'react-native'
-import { StyledButton, StyledInput, StyledText } from '../../components'
+import { Keyboard, KeyboardAvoidingView, TouchableWithoutFeedback, View, Platform, Alert } from 'react-native'
+import { CheckBox, StyledButton, StyledInput, StyledText } from '../../components'
 import { useTheme } from '@react-navigation/native'
 import { getUserData } from '../../store/auth/actions'
 import { RootState, useAppDispatch } from '../../store'
 import createStyles from './styles'
 import { useSelector } from 'react-redux'
+import { Colors } from '../../interfaces/colors'
+import AsyncStorage from '@react-native-community/async-storage'
 
 const FORM_INPUT_UPDATE = 'FORM_INPUT_UPDATE'
 
@@ -59,7 +61,8 @@ const Auth = () => {
   const dispatch = useAppDispatch()
   const user = useSelector((state: RootState) => state.user)
   const [formState, formDispatch] = React.useReducer(formReducer, INITIAL_STATE)
-  const styles = React.useMemo(() => createStyles(colors, formState), [colors, formState])
+  const styles = React.useMemo(() => createStyles(colors as Colors, formState), [colors, formState])
+  const [saveUser, setSaveUser] = React.useState(false)
 
   const handleInputChange = React.useCallback(
     (inputId: any, inputValue: any, inputValidity: any) => {
@@ -73,6 +76,32 @@ const Auth = () => {
     [formDispatch]
   )
 
+  const handleAutoLogin = () => {
+    return new Promise((resolve, reject) => {
+      Alert.alert(
+        'Inicio automático',
+        '¿Desea activar el inicio automático a la aplicación?',
+        [
+          {
+            text: 'No',
+            onPress: () => resolve(false)
+          },
+          {
+            text: 'Sí',
+            onPress: () => resolve(true)
+          }
+        ],
+        { cancelable: false }
+      )
+    })
+  }
+
+  const handleSaveLoginData = async (user: string, password: string) => {
+    const autoLogin = await handleAutoLogin()
+    if (!autoLogin && saveUser) await AsyncStorage.setItem('@user', JSON.stringify({ user: user, password: null }))
+    if (autoLogin) await AsyncStorage.setItem('@user', JSON.stringify({ user: user, password: password }))
+  }
+
   const handleAuth = async () => {
     try {
       await dispatch(
@@ -82,12 +111,7 @@ const Auth = () => {
         })
       )
       if (user.error) throw new Error('Error al iniciar sesión')
-
-      // const response = await getTokenAccesso(
-      //   formState.inputValues.user,
-      //   formState.inputValues.password,
-      // );
-      // console.log('Respuesta: ', response);
+      handleSaveLoginData(formState.inputValues.user, formState.inputValues.password)
     } catch (err) {
       console.log(err)
     }
@@ -123,9 +147,18 @@ const Auth = () => {
               error='Debe tener por lo menos 6 caracteres'
             />
           </KeyboardAvoidingView>
+          <CheckBox text='recordar usuario' value={saveUser} onValueChange={() => setSaveUser(!saveUser)} />
           <StyledButton my sz60 primary disabled={!formState.formIsValid} onPress={handleAuth} style={styles.button} loading={user.loading}>
             <StyledText bold surface>
               Iniciar sesión
+            </StyledText>
+          </StyledButton>
+        </View>
+        <View style={styles.footer}>
+          <StyledText rg>¿No recuerda la contraseña?</StyledText>
+          <StyledButton borderless onPress={() => {}}>
+            <StyledText rg accent bold>
+              recupérela aquí
             </StyledText>
           </StyledButton>
         </View>

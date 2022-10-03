@@ -63,7 +63,7 @@ const StyledInput = ({ autoCapitalize, id, email, error, minLength, mode, passwo
   const [isVisible, setIsVisible] = React.useState(false)
   const [isFocus, setIsFocus] = React.useState(false)
   const [inputState, dispatch] = React.useReducer(inputReducer, INITIAL_STATE)
-  const styles = React.useMemo(() => createStyles(colors, mode, inputState, isFocus), [colors, mode, inputState, isFocus])
+  const styles = React.useMemo(() => createStyles(colors as Colors, mode, inputState, isFocus), [colors, mode, inputState, isFocus])
 
   React.useEffect(() => {
     if (inputState.touched) onInputChange(id, inputState.value, inputState.isValid)
@@ -114,7 +114,7 @@ const StyledInput = ({ autoCapitalize, id, email, error, minLength, mode, passwo
   )
 }
 
-const createStyles = (colors: Colors, mode: string, inputState: State, isFocus: boolean) =>
+const createStyles = (colors: Colors, mode: string | undefined, inputState: State, isFocus: boolean) =>
   StyleSheet.create({
     border: mode
       ? mode === 'outline'
