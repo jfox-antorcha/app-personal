@@ -10,6 +10,7 @@ import GeneralInfo from './Components/GeneralInfo'
 import BanksInfo from './Components/BanksInfo'
 import AddressInfo from './Components/AddressInfo'
 import EmailInfo from './Components/EmailInfo'
+import Logout from './Components/Logout'
 
 const Profile = () => {
   const { colors } = useTheme()
@@ -18,7 +19,7 @@ const Profile = () => {
 
   return (
     <View style={styles.container}>
-      <Header title='Perfil del empleado' />
+      <Header title='Perfil del empleado' right={<Logout />} />
       {!profile.loading ? (
         <ScrollView style={styles.body} contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
           <GeneralInfo profile={profile.data} />

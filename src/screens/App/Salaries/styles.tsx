@@ -9,7 +9,7 @@ const createStyles = (colors: Colors) =>
       paddingVertical: sizes.padding
     },
     body: {
-      paddingHorizontal: sizes.padding * 2
+      paddingHorizontal: sizes.padding
     },
     listContainer: {
       paddingVertical: sizes.padding,
@@ -19,13 +19,15 @@ const createStyles = (colors: Colors) =>
       paddingBottom: sizes.padding * 16
     },
     cardContainer: {
+      marginHorizontal: sizes.padding,
       paddingVertical: sizes.padding
     },
     rowContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      paddingHorizontal: sizes.padding
+      paddingHorizontal: sizes.padding,
+      marginVertical: sizes.padding
     },
     itemContainer: {
       justifyContent: 'center',

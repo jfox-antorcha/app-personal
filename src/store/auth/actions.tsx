@@ -1,4 +1,4 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk, createAction } from '@reduxjs/toolkit'
 import { getTokenAccesso } from '../../api/token'
 import { User } from '../../interfaces/auth'
 
@@ -23,3 +23,5 @@ export const getUserData = createAsyncThunk('user/getUserData', async (auth: Aut
   }
   return userData
 })
+
+export const logout = createAction('LOGOUT')

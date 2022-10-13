@@ -1,3 +1,4 @@
+const attach = require('../assets/icons/attach.png')
 const back = require('../assets/icons/back.png')
 const chat = require('../assets/icons/chat.png')
 const check = require('../assets/icons/check.png')
@@ -16,6 +17,7 @@ const visibilityOff = require('../assets/icons/visibility_off.png')
 const warning = require('../assets/icons/warning.png')
 
 export default {
+  attach,
   back,
   chat,
   check,

@@ -9,7 +9,7 @@ const AppNavigator = () => {
   const { top } = useSafeAreaInsets()
   return (
     <Stack.Navigator screenOptions={{ headerShown: false, cardStyle: { paddingTop: top } }}>
-      <Stack.Screen name='Home' component={App} />
+      <Stack.Screen name='App' component={App} />
     </Stack.Navigator>
   )
 }

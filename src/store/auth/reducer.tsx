@@ -1,14 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { User } from '../../interfaces/auth'
-import { getUserData } from './actions'
+import { getUserData, logout } from './actions'
+
+const initialState = {
+  userData: {} as User,
+  loading: false,
+  error: false
+}
 
 const userSlice = createSlice({
   name: 'user',
-  initialState: {
-    userData: {} as User,
-    loading: false,
-    error: false
-  },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getUserData.pending, (state) => {
@@ -20,6 +22,7 @@ const userSlice = createSlice({
     builder.addCase(getUserData.rejected, (state) => {
       ;(state.loading = false), (state.error = true)
     })
+    builder.addCase(logout, () => initialState)
   }
 })
 

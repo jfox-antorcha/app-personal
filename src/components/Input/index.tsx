@@ -13,6 +13,7 @@ interface Props {
   id: string
   email?: boolean
   error?: string
+  initialValue?: string
   minLength?: number
   mode?: 'outline' | 'underline'
   password?: boolean
@@ -58,7 +59,19 @@ const inputReducer = (state: State, action: Actions) => {
   }
 }
 
-const StyledInput = ({ autoCapitalize, id, email, error, minLength, mode, password, placeholder, required, onInputChange }: Props) => {
+const StyledInput = ({
+  autoCapitalize,
+  id,
+  email,
+  error,
+  minLength,
+  mode,
+  password,
+  placeholder,
+  required,
+  onInputChange,
+  initialValue
+}: Props) => {
   const { colors } = useTheme()
   const [isVisible, setIsVisible] = React.useState(false)
   const [isFocus, setIsFocus] = React.useState(false)
@@ -93,6 +106,7 @@ const StyledInput = ({ autoCapitalize, id, email, error, minLength, mode, passwo
     <View>
       <View style={[styles.inputContainer, styles.border]}>
         <TextInput
+          defaultValue={initialValue ? initialValue : ''}
           autoCapitalize={autoCapitalize}
           style={styles.input}
           placeholder={placeholder}

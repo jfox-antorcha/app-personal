@@ -63,6 +63,15 @@ const Auth = () => {
   const [formState, formDispatch] = React.useReducer(formReducer, INITIAL_STATE)
   const styles = React.useMemo(() => createStyles(colors as Colors, formState), [colors, formState])
   const [saveUser, setSaveUser] = React.useState(false)
+  const [storagedUser, setStoragedUser] = React.useState('')
+
+  React.useEffect(() => {
+    ;(async () => {
+      const getStoragedUser = await AsyncStorage.getItem('@user')
+      if (getStoragedUser) setStoragedUser(JSON.parse(getStoragedUser).user)
+      if (storagedUser.length > 1) setSaveUser(true)
+    })()
+  }, [])
 
   const handleInputChange = React.useCallback(
     (inputId: any, inputValue: any, inputValidity: any) => {
@@ -133,7 +142,14 @@ const Auth = () => {
             <StyledText my mx black>
               Usuario
             </StyledText>
-            <StyledInput autoCapitalize='none' id='user' onInputChange={handleInputChange} mode='outline' error='requerido y/o no válido' />
+            <StyledInput
+              autoCapitalize='none'
+              id='user'
+              onInputChange={handleInputChange}
+              mode='outline'
+              error='requerido y/o no válido'
+              initialValue={storagedUser}
+            />
             <StyledText my mx black>
               Contraseña
             </StyledText>
